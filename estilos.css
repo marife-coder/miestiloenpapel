@@ -1,0 +1,997 @@
+/* ================== VARIABLES DE COLOR ================== */
+:root {
+    --bg: #ffffff;
+    --muted: #fdf8f6;
+    --accent: #f8a8b8;
+    /* Rosa cálido */
+    --accent-2: #fce6d2;
+    /* Beige pastel */
+    --text: #333333;
+    --text-light: #666666;
+    --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* ================== ESTILO GENERAL ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+body {
+    font-family: "SUSE Mono", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+h4 {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+code,
+.mono {
+    font-family: "SUSE Mono", monospace;
+}
+
+/* Si quieres usar Bitcount Single Ink para frases o citas especiales */
+.cita {
+    font-family: "Bitcount Single Ink", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* ================== HEADER ================== */
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 12px 40px;
+    /* unificado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Contenedor interno: logo y menú */
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Logo izq, menú der */
+    width: 100%;
+}
+
+/* --- LOGO ---  */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo h1 { 
+    font-family: "Ms Madi", cursive;
+    font-weight: 700;
+    color: #000;
+    font-size: 2.0rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.logo h1:hover {
+    transform: translateY(-3px);
+    color: var(--accent);
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+/* --- MENÚ PRINCIPAL --- */
+.menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    /* ⚡ empuja el menú completamente a la derecha */
+}
+
+.menu ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li a {
+    font-family: "Instrument Serif", serif;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s ease;
+}
+
+.menu ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.menu ul li a:hover {
+    color: var(--accent);
+}
+
+.menu ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.menu ul li a img.icono-inicio {
+    width: 30px;  /* ajusta el tamaño del icono */
+    height: 30px; /* ajusta el tamaño del icono */
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.menu ul li a:hover img.icono-inicio {
+    transform: scale(1.1); /* efecto al pasar el mouse */
+}
+
+/* --- CARRITO --- */
+.carrito {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff7f9;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.icono-carrito {
+    width: 24px;
+    height: 24px;
+}
+
+.total-precio {
+    font-weight: 600;
+    color: var(--accent);
+    font-family: "PT Sans", sans-serif;
+}
+
+/* --- LOGIN --- */
+.texto-login {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    font-family: "SUSE Mono", monospace;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.texto-login span { 
+    font-family: "Playwrite HU", cursive;
+    font-weight: 400;
+    font-style: normal;  
+}
+
+.texto-login .saludo {
+    font-size: 1rem;
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    color: #555;
+}
+
+.texto-login .accion {
+    font-size: 0.9rem;
+    font-family: "Instrument Serif", serif;
+    font-weight: 500;
+    color: #d63384;
+}
+
+.btn-login {
+    font-family: "Playwrite DE SAS", cursive;
+    font-weight: 400; 
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: transparent;
+    /* sin fondo */
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.btn-login .accion {
+    color: #d63384;
+    font-weight: 600;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+}
+
+.icono-user {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.btn-login:hover .icono-user {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 6px rgba(255, 182, 193, 0.8));
+}
+
+/* --- ÍCONOS GENERALES --- */
+.icono-menu {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.menu a:hover .icono-menu {
+    transform: scale(1.1) rotate(5deg);
+    filter: brightness(1.1);
+}
+
+.icono-magia {
+    width: 26px;
+    height: 26px;
+}
+
+.icono-coleccion {
+    width: 30px;
+    height: 25px;
+}
+
+/* --- HAMBURGUESA MÓVIL --- */
+.menu-icon {
+    display: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--text);
+}
+
+/* ================== HERO ================== */
+.hero {
+    background: linear-gradient(120deg, #fffaf8 0%, #ffe0e6 100%);
+    padding: 120px 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-content {
+    flex: 1 1 500px;
+    text-align: left;
+}
+
+.hero h2 {
+    font-family: "Instrument Serif", serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero p {
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-principal {
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-principal:hover {
+    background: #ff8da3;
+    transform: translateY(-3px);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secundario:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    flex: 1 1 400px;
+    text-align: center;
+}
+
+.hero-image img {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.05);
+}
+
+
+/* ================== CATEGORÍAS ================== */
+.categorias {
+    background: #fff;
+    padding: 70px 0;
+    text-align: center;
+}
+
+.categorias h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.grid-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.cat-item {
+    background: var(--muted);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px var(--shadow);
+    transition: transform 0.3s;
+    padding-bottom: 10px;
+}
+
+.cat-item:hover {
+    transform: translateY(-5px);
+}
+
+.cat-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.cat-item h3 {
+    font-weight: bold;
+    /* ← aquí está el cambio */
+    color: var(--text);
+    margin-top: 10px;
+    font-size: 1.05rem;
+}
+
+/* === SECCIÓN BENEFICIOS === */
+.beneficios {
+    background: #fffaf8;
+    /* fondo suave, puedes cambiarlo si deseas */
+    padding: 60px 0;
+    border-top: 2px solid #ffe0e6;
+    /* línea sutil decorativa */
+}
+
+.beneficios .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.beneficio {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.beneficio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.beneficio img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.beneficio:hover img {
+    transform: scale(1.1);
+}
+
+.beneficio h4 {
+    font-family: "Instrument Serif", serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.beneficio p {
+    font-family: "PT Sans", sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* ================== PRODUCTOS ================== */
+.productos {
+    padding: 70px 0;
+    text-align: center;
+}
+
+.productos h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+.galeria-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.producto {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 16px var(--shadow);
+    transition: transform 0.3s ease;
+    max-width: 240px;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+.producto img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.producto h3 {
+    font-size: 1rem;
+    margin: 10px 0 5px;
+    color: var(--text);
+}
+
+.producto .precio {
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* ================== SOBRE NOSOTROS ================== */
+.sobre-nosotros {
+    background: linear-gradient(180deg, #fff 0%, #fff8f9 100%);
+    padding: 90px 0;
+}
+
+.sobre-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.sobre-texto {
+    flex: 1 1 550px;
+}
+
+.sobre-texto h2 {
+    font-family: "Instrument Serif", serif;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.sobre-texto h2::after {
+    content: '';
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+}
+
+.sobre-texto p {
+    font-family: "PT Sans", sans-serif;
+    color: var(--text);
+    margin-bottom: 15px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.lista-productos {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.lista-productos li {
+    background: #fff;
+    border: 1px solid #ffe0e6;
+    border-radius: 8px;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--accent);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lista-productos li:nth-child(4),
+.lista-productos li:nth-child(5) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.lista-productos li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.frase-final {
+    font-style: italic;
+    color: var(--text-light);
+    margin-top: 15px;
+}
+
+.sobre-imagen {
+    flex: 1 1 400px;
+    text-align: center;
+}
+
+.sobre-imagen img {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.sobre-imagen img:hover {
+    transform: scale(1.05);
+}
+
+
+/* ================== TESTIMONIOS ================== */
+.testimonios {
+    padding: 70px 0;
+    background: var(--muted);
+    text-align: center;
+}
+
+.testimonios h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.grid-testimonios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.testimonio {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px var(--shadow);
+    line-height: 1.6;
+}
+
+.testimonio h4 {
+    margin-top: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* ================== CONTACTO ================== */
+.contacto {
+    padding: 70px 0;
+    background: #fff;
+    text-align: center;
+}
+
+.card-contacto {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fffaf8;
+    border-radius: 15px;
+    padding: 40px 25px;
+    box-shadow: 0 6px 20px var(--shadow);
+}
+
+.info-contacto h3 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.horarios {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    font-family: "Rock Salt", cursive;
+}
+
+.horarios .columna {
+    text-align: center;
+}
+
+.horarios p {
+    margin: 3px 0;
+    color: var(--text-light);
+}
+
+/* Cambiar fuente de los días (MARTES - VIERNES, SÁBADOS, DOMINGOS) */
+.horarios .columna p strong {
+    font-family: "Rock Salt", cursive;
+    font-weight: 400;
+    font-size: 0.9rem; /* Ajusta tamaño si quieres más grande */
+}
+
+/* Cambiar fuente de los títulos "Correo:" y "Teléfono:" */
+.correo strong,
+.telefono strong {
+    font-family: "Rock Salt", cursive;
+    font-weight: 400;
+    font-size: 1.0rem; /* Ajusta tamaño si quieres más grande */
+}
+
+.correo,
+.telefono {
+    color: var(--text);
+    margin: 8px 0;
+    font-size: 0.95rem;
+    font-family: "Rock Salt", cursive;
+}
+
+
+.btn-secundario {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-family: "Rock Salt", cursive;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-secundario:hover {
+    background: #e6849a;
+    transform: translateY(-3px);
+    font-family: "Rock Salt", cursive;
+}
+
+/* ================== FOOTER ================== */
+.pie {
+    background-color: #f8f6f4;
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-top: 50px;
+}
+
+.footer-top {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.footer-top-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+}
+
+.footer-seccion h3,
+.footer-seccion h4 {
+    color: var(--text);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.footer-marca p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* enlaces rápidos */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-links ul li a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: var(--accent);
+}
+
+/* === ICONOS DE REDES EN EL FOOTER === */
+.redes-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.redes-footer a {
+    display: inline-block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.redes-footer a:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.icono-red {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+
+/* newsletter */
+.footer-newsletter p {
+    margin-bottom: 0.6rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-family: "PT Sans", sans-serif;
+}
+
+.footer-newsletter form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.footer-newsletter input[type="email"] {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.footer-newsletter button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.footer-newsletter button:hover {
+    background: #e6849a;
+    transform: translateY(-2px);
+}
+
+/* parte inferior */
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.02);
+    text-align: center;
+    padding: 1.2rem 0;
+}
+
+.footer-bottom p {
+    margin: 0.3rem 0;
+    color: var(--text-light);
+}
+
+.footer-bottom a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: var(--accent);
+}
+
+/* ================== RESPONSIVO ================== */
+@media (max-width: 900px) {
+    .menu {
+        display: none;
+        position: absolute;
+        top: 64px;
+        right: 0;
+        width: 100%;
+        background: var(--bg);
+        padding: 15px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .menu.mostrar {
+        display: block;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .sobre-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sobre-texto h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .lista-productos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .sobre-imagen img {
+        max-width: 300px;
+    }
+
+    .contenido-sobre-mi {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-top-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-newsletter form {
+        flex-direction: column;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 100px 0 80px;
+    }
+
+    .hero .container {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .horarios {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .beneficios .container {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .beneficio img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .beneficio h4 {
+        font-size: 1rem;
+    }
+
+    .icono-red {
+        width: 26px;
+        height: 26px;
+    }
+}
